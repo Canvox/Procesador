@@ -27,8 +27,8 @@ public class Operacion {
     private String[] cops = {"SU", "RE"};
 
     ArrayList<Instruccion> listaInstrucciones = new ArrayList<>();
-    ArrayList listaMemoria = new ArrayList();
-     //ArrayList<Memoria> listaMemoriaCopia = new ArrayList<Memoria>();
+    ArrayList<Memoria> listaMemoria = new ArrayList<>();
+    
     Instruccion instruccion = new Instruccion();
     Memoria memoria = new Memoria();
     static Scanner scan = new Scanner(System.in);
@@ -48,7 +48,7 @@ public class Operacion {
         }
     }
 
-    /*public void InstruccionesRandom() {
+    public void InstruccionesRandom() {
         String randomDireccion = randomString(CHARSET_AF_09, 4);
         String randomCops;
         String randomDatos = new String();
@@ -81,7 +81,7 @@ public class Operacion {
             result[i] = characterSet[randomCharIndex];
         }
         return new String(result);
-    }*/
+    }
 
     public void mostrar() {
         for (int i = 0; i < listaInstrucciones.size(); i++) {
@@ -89,7 +89,7 @@ public class Operacion {
         }
     }
 
-    /*public void obtener() throws OptionalDataException {
+    public void obtener() throws OptionalDataException {
         int contador = 0;
         try {
             InputStream file = new FileInputStream("Memoria.txt");
@@ -97,7 +97,7 @@ public class Operacion {
 
             //deserialize the List
             while (contador != 10) {
-                listaMemoria.add(input.readObject());
+                listaMemoria.add((Memoria) input.readObject());
                 //Solucion temporal (arreglar asap [si se puede / VAMOS POR EL CAMBIO])
                 contador++;
             }
@@ -110,7 +110,7 @@ public class Operacion {
         } catch (IOException e) {
             e.getMessage();
         }
-    }*/
+    }
 
 }
 
