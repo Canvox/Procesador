@@ -25,17 +25,27 @@ public class Procesador {
 
     public void gestion() {
         int i = 0;
+        int j = 0;
         memoriap.carga();
         operacion.instruccionesUsuario();
         while (true) {
             this.instruccion = operacion.listaInstrucciones.get(i);
             if (this.instruccion.cop.compareTo("SU") == 0) {
-                
+                for (j = 0; j < this.memoriap.listarecuperada.size(); j++) {
+                    if (this.operacion.listaInstrucciones.get(i).direccion.compareTo(this.memoriap.listarecuperada.get(j).direccion) == 0) {
+                        this.memoriap.listarecuperada.get(j).dato += this.operacion.listaInstrucciones.get(i).dato;
+                    }
+                }
+
             }
             if (this.instruccion.cop.compareTo("RE") == 0) {
-
+                for (j = 0; j < this.memoriap.listarecuperada.size(); j++) {
+                    if (this.operacion.listaInstrucciones.get(i).direccion.compareTo(this.memoriap.listarecuperada.get(j).direccion) == 0) {
+                        this.memoriap.listarecuperada.get(j).dato = this.operacion.listaInstrucciones.get(i).dato - this.memoriap.listarecuperada.get(j).dato;
+                    }
+                }
             }
         }
     }
-    
+
 }

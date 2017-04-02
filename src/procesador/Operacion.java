@@ -24,6 +24,7 @@ public class Operacion {
 
     private static final char[] CHARSET_AF_09 = "ABCDEF0123456789".toCharArray();
     private static final char[] CHARSET_01 = "01".toCharArray();
+    private static final char[] CHARSET_09 = "0123456789".toCharArray();
     private String[] cops = {"SU", "RE"};
 
     ArrayList<Instruccion> listaInstrucciones = new ArrayList<>();
@@ -49,15 +50,20 @@ public class Operacion {
     }
 
     public void InstruccionesRandom() {
-        String randomDireccion = randomString(CHARSET_AF_09, 4);
+        
         String randomCops;
         String randomDatos = new String();
             
         for (int i = 0; i < 10; i++) {
-            //randomCops = randomString(CHARSET_01, 1);
-            //int x = Integer.parseInt(randomCops);
-            //instruccion.setCop(cops[x]);
-            instruccion.setDireccion(randomDireccion.toUpperCase());
+            randomCops = randomString(CHARSET_01, 1);
+            int x = Integer.parseInt(randomCops);
+            instruccion.setCop(cops[x]);
+            
+            String randomDireccion = randomString(CHARSET_09, 1);
+            int y = Integer.parseInt(randomDireccion);
+            memoria = listaMemoria.get(y);
+            instruccion.setDireccion(memoria.direccion.toUpperCase());
+
             randomDatos = randomString(CHARSET_AF_09, 4);
             instruccion.setDato(randomDatos);
             //Partes[i][j] = randomDireccion;
