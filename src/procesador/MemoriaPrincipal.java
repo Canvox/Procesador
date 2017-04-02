@@ -34,7 +34,7 @@ public class MemoriaPrincipal {
 
     //protected String[][] Partes = new String[10][10];
     
-    ArrayList listarecuperada = new ArrayList();
+    ArrayList<Memoria> listarecuperada = new ArrayList<>();
     
     int contador = 0; 
 
@@ -64,7 +64,7 @@ public class MemoriaPrincipal {
                     //deserialize the List
                     
                      while (contador != 10) {
-                        listarecuperada.add(input.readObject());
+                          listarecuperada.add((Memoria) input.readObject());
                         //Solucion temporal (arreglar asap [si se puede / VAMOS POR EL CAMBIO])
                         contador++;
                      }
