@@ -21,7 +21,7 @@ public class MemoriaPrincipalTest {
 
     ArrayList<MemoriaTest> listaMemoria = new ArrayList<>();
     
-    MemoriaTest memoria = new MemoriaTest();
+    MemoriaTest memoria;
 
     private static final char[] CHARSET_AF_09 = "ABCDEF0123456789".toCharArray();
 
@@ -32,6 +32,8 @@ public class MemoriaPrincipalTest {
         String randomDireccion = randomString(CHARSET_AF_09, 4);
 
         while (op != -1) {
+            
+            memoria = new MemoriaTest();
             
             memoria.direccion = randomDireccion;
 

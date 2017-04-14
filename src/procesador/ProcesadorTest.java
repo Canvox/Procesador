@@ -5,6 +5,8 @@
  */
 package procesador;
 
+import java.util.Random;
+
 /**
  *
  * @author INTEL-COREi7
@@ -12,6 +14,7 @@ package procesador;
 public class ProcesadorTest {
 
     MemoriaTest memoria = new MemoriaTest();
+    MemoriaPrincipalTest memoriap = new MemoriaPrincipalTest();
     InstruccionTest instruccion = new InstruccionTest();
 
     UnidadControl ucontrol = new UnidadControl();
@@ -23,6 +26,8 @@ public class ProcesadorTest {
     Reloj reloj = new Reloj();
 
     UnidadTratamiento utratamiento = new UnidadTratamiento();
+
+    int contador = 0;
 
     public void opcion(String cop) {
         switch (cop) {
@@ -38,38 +43,58 @@ public class ProcesadorTest {
 
         }
     }
-    
-    public void fetchCycle(){
-        ucontrol.PC = gestion.;
+
+    public void fetchCycle() {
+        ucontrol.PC = memoriap.listaMemoria.get(contador).direccion;
         utratamiento.AR = ucontrol.PC;
-        
+        busd.dato();
+        utratamiento.DR = memoriap.listaMemoria.get(contador).instruccion.data;
+        ucontrol.IR = memoriap.listaMemoria.get(contador).instruccion.cop;
+        contador++;
     }
-    
-    public void executionCycle(){
-    
+
+    public void executionCycle() {
+
     }
-    
-    public void load(){
-        
+
+    public void load() {
+        Random r = new Random();
+        int Low = 0;
+        int High = memoriap.listaMemoria.size();
+        int Result = r.nextInt(High - Low) + Low;
+
+        utratamiento.BufferRegistros[0] = memoriap.listaMemoria.get(Result).direccion;
+        utratamiento.AR = utratamiento.BufferRegistros[0];
+        for (int i = 0; i < memoriap.listaMemoria.size(); i++) {
+            if (utratamiento.AR.equals(memoriap.listaMemoria.get(i).direccion)) {
+                utratamiento.DR = memoriap.listaMemoria.get(i).instruccion.data;
+            }
+        }
+        utratamiento.BufferRegistros[0] = utratamiento.DR;
     }
-    
-    public void call(){
-    
+
+    public void call() {
+
     }
-    
-    public void push(){
-    
+
+    public void push() {
+
     }
-    
-    public void pop(){
-    
+
+    public void pop() {
+
     }
-    
-    public void add(){
-    
+
+    public void add() {
+
     }
-    
-    public void jump(){
-    
+
+    public void jump() {
+        Random r = new Random();
+        int Low = 0;
+        int High = memoriap.listaMemoria.size();
+        int Result = r.nextInt(High - Low) + Low;
+        utratamiento.BufferRegistros[0] = memoriap.listaMemoria.get(Result).direccion;
+        ucontrol.PC = utratamiento.BufferRegistros[0];
     }
 }

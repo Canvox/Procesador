@@ -15,17 +15,20 @@ public class InstruccionTest {
 
     String cop;
     String dato;
+    String data;
     int longitud;
 
     public InstruccionTest() {
         this.cop = " ";
         this.dato = " ";
+        this.data = " ";
         this.longitud = 0;
     }
 
-    public InstruccionTest(String cop, String dato, int longitud) {
+    public InstruccionTest(String cop, String dato, String data, int longitud) {
         this.cop = cop;
         this.dato = dato;
+        this.data = data;
         this.longitud = longitud;
     }
 
@@ -53,6 +56,13 @@ public class InstruccionTest {
         this.longitud = longitud;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
     
     public void instruccionUsuario() {
 
@@ -63,22 +73,30 @@ public class InstruccionTest {
         System.out.print("Ingrese dato: ");
         this.dato = scan.nextLine();
 
+        this.data = this.cop.concat(this.dato);
     }
 
     public void valor() {
         switch (this.cop) {
             case "LOAD":
                 this.cop = "1010";
+                break;
             case "ADD":
                 this.cop = "102A";
+                break;
             case "JUMP":
                 this.cop = "345F";
+                break;
             case "PUSH":
                 this.cop = "202B";
+                break;
             case "POP":
                 this.cop = "202C";
+                break;
         }
     }
+    
+    
 
     @Override
     public String toString() {
