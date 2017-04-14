@@ -16,6 +16,9 @@ public class Instruccion implements Serializable{
     String cop;
     String direccion;
     String dato;
+    
+    //Tamano como atributo para validar
+    
     private static final double serialVersionUID = 41256789;
 
     public Instruccion() {

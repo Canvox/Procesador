@@ -12,7 +12,7 @@ package procesador;
 public class UnidadControl {
 
     String PC;
-    String IR;
+    String IR; //Deberia ser de tipo de Instruccion
     Reloj reloj = new Reloj();
 
     public UnidadControl() {

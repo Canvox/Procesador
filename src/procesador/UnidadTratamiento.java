@@ -14,7 +14,9 @@ public class UnidadTratamiento {
     String BufferRegistros[] = new String[15];
     String Banderas[] = new String[4];
     String ALU;
+    
     String AR;
+    
     String DR;
     String RT;
 

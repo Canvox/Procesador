@@ -65,7 +65,7 @@ public class MemoriaPrincipal {
                     
                      while (contador != 10) {
                           listarecuperada.add((Memoria) input.readObject());
-                        //Solucion temporal (arreglar asap [si se puede / VAMOS POR EL CAMBIO])
+                        //Solucion temporal 
                         contador++;
                      }
                 }catch(OptionalDataException e){

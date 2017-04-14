@@ -13,17 +13,18 @@ public class Reloj {
 
     float tiempo;
     int ciclos;
-
+    
+    
     public Reloj() {
         this.tiempo = 0;
         this.ciclos = 0;
     }
 
-    public void tiempo() {
-
+    public float ciclos(float hertz) {
+        float resultado = 0;
+        resultado = 1 / hertz;
+        return resultado;
     }
 
-    public void ciclos() {
-
-    }
+    
 }

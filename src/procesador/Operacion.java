@@ -31,18 +31,29 @@ public class Operacion {
     ArrayList<Memoria> listaMemoria = new ArrayList<>();
     
     Instruccion instruccion = new Instruccion();
+    MemoriaPrincipal memoriap = new MemoriaPrincipal();
     Memoria memoria = new Memoria();
     static Scanner scan = new Scanner(System.in);
 
     public void instruccionesUsuario() {
         int op = 0;
-        while (op != 0) {
+        memoriap.carga();
+        for (int i = 0; i < memoriap.listarecuperada.size(); i++) {
+            System.out.println(memoriap.listarecuperada.get(i).toString());
+            
+        }
+        while (op != -1) {
+            
             System.out.print("Ingrese cop: ");
             instruccion.cop = scan.nextLine();
+            
+            //Validar que sea una de las instrucciones dadas
             System.out.print("Ingrese direccion: ");
             instruccion.direccion = scan.nextLine();
-            System.out.println("Ingrese dato: ");
+            //Validar 4 digitos (Max hasta la F)
+            System.out.print("Ingrese dato: ");
             instruccion.dato = scan.nextLine();
+            
             this.listaInstrucciones.add(instruccion);
             System.out.print("Desea ingresar otra instruccion?: ");
             op = scan.nextInt();
@@ -53,15 +64,15 @@ public class Operacion {
         
         String randomCops;
         String randomDatos = new String();
-            
-        for (int i = 0; i < 10; i++) {
+        memoriap.carga();
+        for (int i = 0; i < 5; i++) {
             randomCops = randomString(CHARSET_01, 1);
             int x = Integer.parseInt(randomCops);
             instruccion.setCop(cops[x]);
             
             String randomDireccion = randomString(CHARSET_09, 1);
             int y = Integer.parseInt(randomDireccion);
-            memoria = listaMemoria.get(y);
+            memoria = memoriap.listarecuperada.get(i);
             instruccion.setDireccion(memoria.direccion.toUpperCase());
 
             randomDatos = randomString(CHARSET_AF_09, 4);
