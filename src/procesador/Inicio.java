@@ -35,10 +35,19 @@ public class Inicio {
         }catch(IOException e){
             e.getMessage();
         }*/
-        MemoriaPrincipalTest gestion = new MemoriaPrincipalTest();
-        gestion.generar();
-        gestion.mostrar();
         Interfaz interfaz = new Interfaz();
+        InterfazIngreso interfaz2 = new InterfazIngreso();
+        
+        MemoriaPrincipalTest gestion = new MemoriaPrincipalTest();
+        //gestion.generar();
+        gestion.mostrar();
+        
+        ProcesadorTest procesador = new ProcesadorTest();
+        procesador.fetchCycle();
+        procesador.mostrar();
+        //procesador.load();
+        //procesador.add();
+        //Interfaz interfaz = new Interfaz();
         //printUsage();
         
     }

@@ -12,7 +12,7 @@ package procesador;
 public class Reloj {
 
     float tiempo;
-    int ciclos;
+    float ciclos;
     
     
     public Reloj() {
@@ -20,10 +20,8 @@ public class Reloj {
         this.ciclos = 0;
     }
 
-    public float ciclos(float hertz) {
-        float resultado = 0;
-        resultado = 1 / hertz;
-        return resultado;
+    public void calculo(float hertz) {
+        ciclos = 1 / hertz;
     }
 
     
