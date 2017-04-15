@@ -5,15 +5,17 @@
  */
 package procesador;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author INTEL-COREi7
  */
-public class MemoriaTest {
+public class MemoriaTest implements Serializable {
     String direccion;
     InstruccionTest instruccion;
+    private static final double serialVersionUID = 41256789;
     
     public MemoriaTest() {
         this.direccion = " ";

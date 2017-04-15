@@ -28,15 +28,18 @@ public class InterfazIngreso extends JFrame implements ActionListener {
 
     JButton b1;
 
+    MemoriaPrincipalTest memoriap;
+    MemoriaTest memoria;
+
     public InterfazIngreso() {
-        
+
         frame = new JFrame();
-        
+
         t1 = new JTextField(10);
-        t1.setBorder(BorderFactory.createTitledBorder(t1.getBorder(),"Cop", TitledBorder.CENTER, ICONIFIED));
+        t1.setBorder(BorderFactory.createTitledBorder(t1.getBorder(), "Cop", TitledBorder.CENTER, ICONIFIED));
         t2 = new JTextField(10);
-        t2.setBorder(BorderFactory.createTitledBorder(t2.getBorder(),"Dato", TitledBorder.CENTER, ICONIFIED));
-        
+        t2.setBorder(BorderFactory.createTitledBorder(t2.getBorder(), "Dato", TitledBorder.CENTER, ICONIFIED));
+
         b1 = new JButton("Añadir");
 
         frame.add(t1);
@@ -44,7 +47,7 @@ public class InterfazIngreso extends JFrame implements ActionListener {
 
         frame.add(b1);
         b1.addActionListener(this);
-        
+
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
         frame.setTitle("Instruccion");
@@ -53,6 +56,27 @@ public class InterfazIngreso extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("Añadir")) {
+            
+            memoria = new MemoriaTest();
+            memoriap = new MemoriaPrincipalTest();
+            
+            memoria.setDireccion(memoriap.generar());
+            
+            //instruccion.instruccionUsuario();
+            
+            
+            memoria.instruccion.setCop(t1.getText());
+            memoria.instruccion.valor(memoria.instruccion.cop);
+            memoria.instruccion.setDato(t2.getText());
+            
+            memoria.instruccion.data = memoria.instruccion.cop.concat(memoria.instruccion.dato);
+            
+            memoriap.listaMemoria.add(memoria);
+            
+            memoriap.cargar();
 
+            
+        }
     }
 }

@@ -5,18 +5,21 @@
  */
 package procesador;
 
+import java.io.Serializable;
 import static procesador.Operacion.scan;
 
 /**
  *
  * @author INTEL-COREi7
  */
-public class InstruccionTest {
+public class InstruccionTest implements Serializable {
 
     String cop;
     String dato;
     String data;
     int longitud;
+    
+    private static final double serialVersionUID = 41256768;
 
     public InstruccionTest() {
         this.cop = " ";
@@ -69,14 +72,14 @@ public class InstruccionTest {
         //Validar para que cumpla con formato hexadecimal, etc
         System.out.print("Ingrese cop: ");
         this.cop = scan.nextLine();
-        valor();
+        valor(this.cop);
         System.out.print("Ingrese dato: ");
         this.dato = scan.nextLine();
 
         this.data = this.cop.concat(this.dato);
     }
 
-    public void valor() {
+    public void valor(String cop) {
         switch (this.cop) {
             case "LOAD":
                 this.cop = "1010";

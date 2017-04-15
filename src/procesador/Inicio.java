@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-        import java.lang.management.ManagementFactory;
+import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -36,39 +36,39 @@ public class Inicio {
             e.getMessage();
         }*/
         //Interfaz interfaz = new Interfaz();
-        //InterfazIngreso interfaz2 = new InterfazIngreso();
-        
-        MemoriaPrincipalTest gestion = new MemoriaPrincipalTest();
+        /*MemoriaPrincipalTest gestion = new MemoriaPrincipalTest();
         //gestion.generar();
         //gestion.mostrar();
         
-        ProcesadorTest procesador = new ProcesadorTest();
+        
+        procesador.generar();
         procesador.fetchCycle();
         
-        procesador.mostrar();
+        procesador.mostrar();*/
+        ProcesadorTest procesador = new ProcesadorTest();
+        procesador.menu();
+
+        //procesador.opcion(gestion.memoria.instruccion.cop);
         //procesador.load();
         //procesador.add();
         //Interfaz interfaz = new Interfaz();
         //printUsage();
-        
     }
 
-public static void printUsage() {
-  OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
-  for (Method method : operatingSystemMXBean.getClass().getDeclaredMethods()) {
-    method.setAccessible(true);
-    if (method.getName().startsWith("get") 
-        && Modifier.isPublic(method.getModifiers())) {
-            Object value;
-        try {
-            value = method.invoke(operatingSystemMXBean);
-        } catch (Exception e) {
-            value = e;
-        } // try
-        System.out.println(method.getName() + " = " + value);
-    } // if
-  } // for
+    public static void printUsage() {
+        OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
+        for (Method method : operatingSystemMXBean.getClass().getDeclaredMethods()) {
+            method.setAccessible(true);
+            if (method.getName().startsWith("get")
+                    && Modifier.isPublic(method.getModifiers())) {
+                Object value;
+                try {
+                    value = method.invoke(operatingSystemMXBean);
+                } catch (Exception e) {
+                    value = e;
+                } // try
+                System.out.println(method.getName() + " = " + value);
+            } // if
+        } // for
+    }
 }
-    }
-    
-
