@@ -49,7 +49,6 @@ public class Memoria implements Serializable {
     /*public String getCop() {
         return cop;
     }
-
     public void setCop(String cop) {
         this.cop = cop;
     }*/
@@ -58,8 +57,5 @@ public class Memoria implements Serializable {
     public String toString() {
         return "Instruccion{" + /*"cop=" + cop + "*/ "direccion=" + direccion + ", dato=" + dato + '}';
     }
-    
-   
-    
     
 }

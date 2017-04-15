@@ -56,6 +56,7 @@ public class ProcesadorTest {
         utratamiento.DR = memoriap.listaMemoria.get(contador).instruccion.data;
         ucontrol.IR = memoriap.listaMemoria.get(contador).instruccion.cop;
         contador++;
+        memoriap.mostrar();
     }
 
     public void executionCycle() {
