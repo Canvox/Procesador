@@ -72,6 +72,7 @@ public class InterfazIngreso extends JFrame implements ActionListener {
             //instruccion.instruccionUsuario();
             if ((t1.getText().equals("LOAD") || t1.getText().equals("ADD") || t1.getText().equals("JUMP" )) && mat.matches()){
                 memoria.instruccion.setCop(t1.getText());
+                memoria.instruccion.setDato(t2.getText());
                 memoria.instruccion.valor(memoria.instruccion.cop);
                 memoria.instruccion.data = memoria.instruccion.cop.concat(memoria.instruccion.dato);
                 memoriap.listaMemoria.add(memoria);
@@ -84,7 +85,7 @@ public class InterfazIngreso extends JFrame implements ActionListener {
             }
             //Siempre se esta sobrescribiendo el file
             t1.setText("");
-            t2.setText(" ");
+            t2.setText("");
         }
     }
 }
