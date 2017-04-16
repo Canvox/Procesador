@@ -28,7 +28,7 @@ public class InterfazIngreso extends JFrame implements ActionListener {
 
     JButton b1;
 
-    MemoriaPrincipalTest memoriap;
+    MemoriaPrincipalTest memoriap = new MemoriaPrincipalTest();
     MemoriaTest memoria;
 
     public InterfazIngreso() {
@@ -59,7 +59,7 @@ public class InterfazIngreso extends JFrame implements ActionListener {
         if (e.getActionCommand().equals("Añadir")) {
             
             memoria = new MemoriaTest();
-            memoriap = new MemoriaPrincipalTest();
+            
             
             memoria.setDireccion(memoriap.generar());
             
@@ -73,6 +73,10 @@ public class InterfazIngreso extends JFrame implements ActionListener {
             memoria.instruccion.data = memoria.instruccion.cop.concat(memoria.instruccion.dato);
             
             memoriap.listaMemoria.add(memoria);
+            
+            //Siempre se esta sobrescribiendo el file
+            t1.setText("");
+            t2.setText(" ");
             
             memoriap.cargar();
 

@@ -103,7 +103,7 @@ public class InstruccionTest implements Serializable {
 
     @Override
     public String toString() {
-        return "InstruccionTest{" + "cop=" + cop + ", dato=" + dato + '}';
+        return "InstruccionTest{" + "cop=" + cop.toUpperCase() + ", dato=" + dato + '}';
     }
     
 

@@ -16,7 +16,7 @@ public class BusDatos extends Bus {
     }
 
     public void dato() {
-        System.out.println("Pasando por Bus de Datos ...");
+        System.out.println("---Pasando por Bus de Datos ...---");
     }
 
 }
