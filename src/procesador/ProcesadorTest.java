@@ -169,7 +169,7 @@ public class ProcesadorTest {
                 utratamiento.DR = memoriap.listaMemoria.get(i).instruccion.data;
             }
         }
-        utratamiento.BufferRegistros[1] = utratamiento.DR;
+        utratamiento.BufferRegistros[1] = memoriap.listaMemoria.get(Result).instruccion.dato ;
         System.out.println("Buffer de Registros cargados exitosamente!");
     }
 
@@ -198,7 +198,7 @@ public class ProcesadorTest {
         utratamiento.BufferRegistros[0] = utratamiento.BufferRegistros[Result];
 
         utratamiento.RT = utratamiento.BufferRegistros[0];
-        utratamiento.BufferRegistros[1] = utratamiento.BufferRegistros[1].substring(utratamiento.BufferRegistros[1].length() - 4);
+        utratamiento.BufferRegistros[1] = utratamiento.BufferRegistros[Result];
 
         int RT = Integer.parseInt(utratamiento.RT, 16);
         int r7 = Integer.parseInt(utratamiento.BufferRegistros[1], 16);

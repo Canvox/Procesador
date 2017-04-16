@@ -9,10 +9,13 @@ import java.awt.FlowLayout;
 import static java.awt.Frame.ICONIFIED;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
@@ -57,30 +60,31 @@ public class InterfazIngreso extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Añadir")) {
-            
+
+            Pattern pat = Pattern.compile("[A-F0-9]{4}");
+             
             memoria = new MemoriaTest();
-            
-            
+
             memoria.setDireccion(memoriap.generar());
-            
+           
+            Matcher mat = pat.matcher(t2.getText());
+
             //instruccion.instruccionUsuario();
-            
-            
-            memoria.instruccion.setCop(t1.getText());
-            memoria.instruccion.valor(memoria.instruccion.cop);
-            memoria.instruccion.setDato(t2.getText());
-            
-            memoria.instruccion.data = memoria.instruccion.cop.concat(memoria.instruccion.dato);
-            
-            memoriap.listaMemoria.add(memoria);
-            
+            if ((t1.getText().equals("LOAD") || t1.getText().equals("ADD") || t1.getText().equals("JUMP" )) && mat.matches()){
+                memoria.instruccion.setCop(t1.getText());
+                memoria.instruccion.valor(memoria.instruccion.cop);
+                memoria.instruccion.data = memoria.instruccion.cop.concat(memoria.instruccion.dato);
+                memoriap.listaMemoria.add(memoria);
+                JOptionPane.showMessageDialog(frame, "Instruccion agregada exitosamente");
+                memoriap.cargar();
+            } else {
+                JOptionPane.showMessageDialog(frame, "Ingreso invalido!", "Error", JOptionPane.ERROR_MESSAGE);
+                t1.setText("");
+                t2.setText("");
+            }
             //Siempre se esta sobrescribiendo el file
             t1.setText("");
             t2.setText(" ");
-            
-            memoriap.cargar();
-
-            
         }
     }
 }
