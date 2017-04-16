@@ -15,8 +15,13 @@ import java.io.InputStream;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.OptionalDataException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,6 +48,9 @@ public class ProcesadorTest {
     int contador2 = 0;
 
     static Scanner scan = new Scanner(System.in);
+
+    JFrame frame = new JFrame();
+    ImageIcon image;
 
     public void opcion(String cop) {
         //No pasarle el cop como parametro
@@ -83,7 +91,7 @@ public class ProcesadorTest {
                 ObjectInput input = new ObjectInputStream(file);
 
                 while (contador != 2) {
-                    memoriap.listaMemoria.add((MemoriaTest)input.readObject());
+                    memoriap.listaMemoria.add((MemoriaTest) input.readObject());
 
                     // contador++;readLine
                 }
@@ -95,8 +103,8 @@ public class ProcesadorTest {
         }
 
     }
-    
-     public void mostrarMemoria() {
+
+    public void mostrarMemoria() {
 
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("Memoria.txt"));
@@ -118,7 +126,7 @@ public class ProcesadorTest {
             e.printStackTrace();
 
         }
-     }
+    }
 
     public void fetchCycle() {
         this.leer();
@@ -134,24 +142,40 @@ public class ProcesadorTest {
         contador++;
         System.out.println("Captacion exitosa!");
         System.out.println("(Listado memorias captadas: )");
-        memoriap.mostrar();
+        this.mostrarMemoriaProcesador();
+        image = new ImageIcon("image4.png");
+        JOptionPane.showMessageDialog(frame, "Captacion exitosa!", "Captacion de Datos", JOptionPane.INFORMATION_MESSAGE, image);
     }
 
     public void executionCycle() {
-       
-        switch(memoriap.listaMemoria.get(contador2).instruccion.cop){
-            case "1010":
-                this.load();
-                break;
-            case "102A":
-                this.load();
-                this.add();
-                break;
-            case "345F":
-                this.jump();
-                break;
+        if (contador2 >= memoriap.listaMemoria.size()) {
+            System.out.println("No existen mas instrucciones a ejecutarse!");
+            JOptionPane.showMessageDialog(frame, "No existen mas instrucciones a ejecutarse!", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            memoriap.listaMemoria.clear();
+            contador = 0;
+            contador2 = 0;
+            try {
+                PrintWriter pw = new PrintWriter("Memoria.txt");
+                pw.print("");                             
+                pw.close();
+            } catch (FileNotFoundException e) {
+                e.getMessage();
+            }
+        } else {
+            switch (memoriap.listaMemoria.get(contador2).instruccion.cop) {
+                case "1010":
+                    this.load();
+                    break;
+                case "102A":
+                    this.load();
+                    this.add();
+                    break;
+                case "345F":
+                    this.jump();
+                    break;
+            }
+            contador2++;
         }
-        contador2++;
     }
 
     public void load() {
@@ -169,7 +193,7 @@ public class ProcesadorTest {
                 utratamiento.DR = memoriap.listaMemoria.get(i).instruccion.data;
             }
         }
-        utratamiento.BufferRegistros[1] = memoriap.listaMemoria.get(Result).instruccion.dato ;
+        utratamiento.BufferRegistros[1] = memoriap.listaMemoria.get(Result).instruccion.dato;
         System.out.println("Buffer de Registros cargados exitosamente!");
     }
 
@@ -184,7 +208,6 @@ public class ProcesadorTest {
     public void pop() {
 
     }*/
-
     public void add() {
         load();
 
@@ -222,6 +245,12 @@ public class ProcesadorTest {
         utratamiento.BufferRegistros[0] = memoriap.listaMemoria.get(Result).direccion;
         ucontrol.PC = utratamiento.BufferRegistros[0];
         System.out.println("Salto exitoso!");
+    }
+    
+    public void mostrarMemoriaProcesador() {
+        for (int i = 0; i < memoriap.listaMemoria.size(); i++) {
+            System.out.println(memoriap.listaMemoria.get(i).toString());
+        }
     }
 
     public void mostrar() {

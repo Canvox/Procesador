@@ -29,7 +29,7 @@ public class InterfazIngreso extends JFrame implements ActionListener {
     JTextField t1;
     JTextField t2;
 
-    JButton b1;
+    JButton b1,b2;
 
     MemoriaPrincipalTest memoriap = new MemoriaPrincipalTest();
     MemoriaTest memoria;
@@ -44,12 +44,16 @@ public class InterfazIngreso extends JFrame implements ActionListener {
         t2.setBorder(BorderFactory.createTitledBorder(t2.getBorder(), "Dato", TitledBorder.CENTER, ICONIFIED));
 
         b1 = new JButton("Añadir");
+        b2 = new JButton("Stop");
 
         frame.add(t1);
         frame.add(t2);
 
         frame.add(b1);
         b1.addActionListener(this);
+        
+        frame.add(b2);
+        b2.addActionListener(this);
 
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
@@ -78,6 +82,7 @@ public class InterfazIngreso extends JFrame implements ActionListener {
                 memoriap.listaMemoria.add(memoria);
                 JOptionPane.showMessageDialog(frame, "Instruccion agregada exitosamente");
                 memoriap.cargar();
+                
             } else {
                 JOptionPane.showMessageDialog(frame, "Ingreso invalido!", "Error", JOptionPane.ERROR_MESSAGE);
                 t1.setText("");
@@ -87,5 +92,9 @@ public class InterfazIngreso extends JFrame implements ActionListener {
             t1.setText("");
             t2.setText("");
         }
+        
+         if (e.getActionCommand().equals("Stop")) {
+             memoriap.listaMemoria.clear();
+         }
     }
 }
