@@ -274,7 +274,7 @@ public class ProcesadorTest {
                     this.executionCycle();
                     break;
                 case 4:
-
+                    Interfaz salida = new Interfaz(ucontrol, utratamiento);
                     break;
                 case 5:
 
