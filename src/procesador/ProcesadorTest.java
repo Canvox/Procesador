@@ -212,12 +212,20 @@ public class ProcesadorTest {
         utratamiento.DR = ucontrol.StackPointer.get(sp).instruccion.dato;
         ucontrol.PC = utratamiento.AR;
         System.out.println("Llamado exitoso!");
-        sp++;
+        
         //ucontrol.mostrar();
     }
     
     public void retorno(){
-        
+        this.call();
+        System.out.println("(Inicializando retorno ...)");
+        sp++;
+        utratamiento.AR = ucontrol.StackPointer.get(sp).direccion;
+        utratamiento.DR = ucontrol.PC;
+        busdi.dato();
+        utratamiento.AR = utratamiento.DR;
+        ucontrol.PC = utratamiento.BufferRegistros[0];
+        System.out.println("Retorno exitoso!");
     }
     
     
