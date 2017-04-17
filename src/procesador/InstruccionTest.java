@@ -6,7 +6,7 @@
 package procesador;
 
 import java.io.Serializable;
-import static procesador.Operacion.scan;
+import java.util.Scanner;
 
 /**
  *
@@ -20,6 +20,8 @@ public class InstruccionTest implements Serializable {
     int longitud;
     
     private static final double serialVersionUID = 41256768;
+    
+    static Scanner scan = new Scanner(System.in);
 
     public InstruccionTest() {
         this.cop = " ";
