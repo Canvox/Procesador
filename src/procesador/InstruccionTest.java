@@ -90,10 +90,10 @@ public class InstruccionTest implements Serializable {
             case "JUMP":
                 this.cop = "345F";
                 break;
-            case "PUSH":
+            case "CALL":
                 this.cop = "202B";
                 break;
-            case "POP":
+            case "RETURN":
                 this.cop = "202C";
                 break;
         }

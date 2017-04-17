@@ -46,6 +46,7 @@ public class ProcesadorTest {
     int contador = 0;
     int hertz;
     int contador2 = 0;
+    int sp = 0;
 
     static Scanner scan = new Scanner(System.in);
 
@@ -56,17 +57,15 @@ public class ProcesadorTest {
         //No pasarle el cop como parametro
         switch (memoriap.listaMemoria.get(contador).instruccion.cop) {
             case "1010":
-
-                //contador++;
                 load();
             case "102A":
                 add();
             case "345F":
                 jump();
             case "202B":
-
+                call();
             case "202C":
-
+                retorno();
         }
     }
 
@@ -173,6 +172,13 @@ public class ProcesadorTest {
                 case "345F":
                     this.jump();
                     break;
+                case "202B":
+                    this.call();
+                    break;
+                case "202C":
+                    this.retorno();
+                    break;
+                       
             }
             contador2++;
         }
@@ -190,6 +196,7 @@ public class ProcesadorTest {
         utratamiento.AR = utratamiento.BufferRegistros[0];
         for (int i = 0; i < memoriap.listaMemoria.size(); i++) {
             if (utratamiento.AR.equals(memoriap.listaMemoria.get(i).direccion)) {
+                busd.dato();
                 utratamiento.DR = memoriap.listaMemoria.get(i).instruccion.data;
             }
         }
@@ -197,17 +204,23 @@ public class ProcesadorTest {
         System.out.println("Buffer de Registros cargados exitosamente!");
     }
 
-    /*public void call() {
-
+    public void call(){
+        
+        ucontrol.leer();
+        utratamiento.AR = ucontrol.StackPointer.get(sp).direccion;
+        busd.dato();
+        utratamiento.DR = ucontrol.StackPointer.get(sp).instruccion.dato;
+        ucontrol.PC = utratamiento.AR;
+        System.out.println("Llamado exitoso!");
+        sp++;
+        //ucontrol.mostrar();
     }
-
-    public void push() {
-
+    
+    public void retorno(){
+        
     }
-
-    public void pop() {
-
-    }*/
+    
+    
     public void add() {
         load();
 
@@ -242,6 +255,7 @@ public class ProcesadorTest {
         int Low = 0;
         int High = memoriap.listaMemoria.size();
         int Result = r.nextInt(High - Low) + Low;
+        busdi.dato();
         utratamiento.BufferRegistros[0] = memoriap.listaMemoria.get(Result).direccion;
         ucontrol.PC = utratamiento.BufferRegistros[0];
         System.out.println("Salto exitoso!");

@@ -40,9 +40,6 @@ public class UnidadTratamiento {
     }
     
     public void llenar(){
-        
-       
-        
         for (int i = 0; i < BufferRegistros.length; i++) {
              String randomDireccion = randomString(CHARSET_AF_09, 4);
             BufferRegistros[i] = randomDireccion;     

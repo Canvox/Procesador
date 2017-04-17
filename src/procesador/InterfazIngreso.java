@@ -74,7 +74,7 @@ public class InterfazIngreso extends JFrame implements ActionListener {
             Matcher mat = pat.matcher(t2.getText());
 
             //instruccion.instruccionUsuario();
-            if ((t1.getText().equals("LOAD") || t1.getText().equals("ADD") || t1.getText().equals("JUMP" )) && mat.matches()){
+            if ((t1.getText().equals("LOAD") || t1.getText().equals("ADD") || t1.getText().equals("JUMP" ) || t1.getText().equals("CALL") || t1.getText().equals("RETURN")) && mat.matches()){
                 memoria.instruccion.setCop(t1.getText());
                 memoria.instruccion.setDato(t2.getText());
                 memoria.instruccion.valor(memoria.instruccion.cop);
